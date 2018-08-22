@@ -17,14 +17,14 @@
         <a onclick="location.reload();">刷新 Refresh</a>
     </div>
     <div class="mt3">
-        <table class="mb2" width="100%">
+        <table class="table-s1" width="100%">
             <thead>
                 <tr>
-                    <th>Endpoint</th>
-                    <th>Block Height</th>
-                    <th>Lantency</th>
-                    <th>Type</th>
-                    <th>Version</th>
+                    <th width="35%">Endpoint</th>
+                    <th width="20%">Block Height</th>
+                    <th width="15%">Lantency</th>
+                    <th width="15%">Type</th>
+                    <th width="15%">Version</th>
                 </tr>
             </thead>
             <tbody id="mon">
@@ -49,7 +49,7 @@
 <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="js/template.js" type="text/javascript"></script>
 <script type="text/javascript">
-    getNet(0);
+    getNet();
     var dlist = [];
     function getNet() {
         $.get("js/ngdnet.json",function(data){
@@ -101,20 +101,24 @@
             });
         }
     }
-    setTimeout(showTable,500);
+    setInterval(function () {
+        getNet();
+        showTable();
+    },5000);
+    setTimeout(showTable,1000);
     function showTable(){
-        console.log(dlist);
-        console.log(dlist[0].href);
-        var html = "";
-        for(var i = 0;i<10;i++){
-            html +="<tr><td>"+dlist[i].href+"</td>" +
-                "<td>"+dlist[i].height+"</td>" +
-                "<td>"+dlist[i].lantency+"</td>" +
-                "<td>"+dlist[i].type+"</td>" +
-                "<td>"+dlist[i].version+"</td>" +
-                "</tr>"
+        if(dlist[0]){
+            var html = "";
+            for(var i = 0;i<10;i++){
+                html +="<tr><td>"+dlist[i].href+"</td>" +
+                    "<td>"+dlist[i].height+"</td>" +
+                    "<td>"+dlist[i].lantency+"</td>" +
+                    "<td>"+dlist[i].type+"</td>" +
+                    "<td>"+dlist[i].version+"</td>" +
+                    "</tr>"
+            }
+            $("#mon").html(html);
         }
-        $("#mon").html(html);
     }
 
 </script>

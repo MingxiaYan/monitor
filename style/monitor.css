@@ -10,4 +10,24 @@ body{
 }
 a{color: #57AF06;text-decoration: none;}
 a:hover{color: #308600;text-decoration: underline;text-shadow: 0 0 5px #99FF66;}
-table{text-align: center;}
+table{text-align: left;}
+
+.table-s1{
+    border-collapse: collapse;
+    box-shadow: 0px 0px 15px #BBB;
+}
+.table-s1 th,
+.table-s1 td{
+    padding: 10px;
+}
+.table-s1 tr{
+    margin-bottom: 10px;
+}
+.table-s1 th{
+    background: rgba(130,192,78,1);
+    color: #FFFFFF;
+    font-weight: 900;
+}
+.table-s1 td{
+    background: #FFF;
+}
