@@ -107,18 +107,18 @@
     },5000);
     setTimeout(showTable,1000);
     function showTable(){
-        if(dlist[0]){
-            var html = "";
-            for(var i = 0;i<10;i++){
-                html +="<tr><td>"+dlist[i].href+"</td>" +
-                    "<td>"+dlist[i].height+"</td>" +
-                    "<td>"+dlist[i].lantency+"</td>" +
-                    "<td>"+dlist[i].type+"</td>" +
-                    "<td>"+dlist[i].version+"</td>" +
+        var html = "";
+        for(var i = 0;i<=10;i++){
+            if(dlist[i]) {
+                html += "<tr><td>" + dlist[i].href + "</td>" +
+                    "<td>" + dlist[i].height + "</td>" +
+                    "<td>" + dlist[i].lantency + "</td>" +
+                    "<td>" + dlist[i].type + "</td>" +
+                    "<td>" + dlist[i].version + "</td>" +
                     "</tr>"
             }
-            $("#mon").html(html);
         }
+        $("#mon").html(html);
     }
 
 </script>

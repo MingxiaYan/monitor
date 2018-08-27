@@ -62,36 +62,6 @@
       "location": "Hong Kong",
       "locale": "hk",
       "type": "RPC"
-    },
-    {
-      "href": "http://47.74.50.11:10332",
-      "location": "Hong Kong",
-      "locale": "hk",
-      "type": "RPC"
-    },
-    {
-      "href": "http://47.88.51.107:20332",
-      "location": "Hong Kong",
-      "locale": "hk",
-      "type": "RPC"
-    },
-    {
-      "href": "http://47.98.227.225:20332",
-      "location": "Hong Kong",
-      "locale": "hk",
-      "type": "RPC"
-    },
-    {
-      "href": "http://47.90.189.186:10332",
-      "location": "Hong Kong",
-      "locale": "hk",
-      "type": "RPC"
-    },
-    {
-      "href": "http://47.91.86.105:10332",
-      "location": "Hong Kong",
-      "locale": "hk",
-      "type": "RPC"
     }
   ]
 }
