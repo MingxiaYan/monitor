@@ -1,0 +1,67 @@
+{
+  "name": "TestNet",
+  "pollTime": "5000",
+  "sites": [
+    {
+      "href": "http://seed1.ngd.network:20332",
+      "location": "USA",
+      "locale": "us",
+      "type": "RPC"
+    },
+    {
+      "href": "http://seed2.ngd.network:20332",
+      "location": "USA",
+      "locale": "us",
+      "type": "RPC"
+    },
+    {
+      "href": "http://seed3.ngd.network:20332",
+      "location": "Hong Kong",
+      "locale": "hk",
+      "type": "RPC"
+    },
+    {
+      "href": "http://seed4.ngd.network:20332",
+      "location": "Hong Kong",
+      "locale": "hk",
+      "type": "RPC"
+    },
+    {
+      "href": "http://seed5.ngd.network:20332",
+      "location": "China",
+      "locale": "cn",
+      "type": "RPC"
+    },
+    {
+      "href": "http://seed6.ngd.network:20332",
+      "location": "USA",
+      "locale": "us",
+      "type": "RPC"
+    },
+    {
+      "href": "http://seed7.ngd.network:20332",
+      "location": "USA",
+      "locale": "us",
+      "type": "RPC"
+    },
+    {
+      "href": "http://seed8.ngd.network:20332",
+      "location": "USA",
+      "locale": "us",
+      "port": "10332",
+      "type": "RPC"
+    },
+    {
+      "href": "http://seed9.ngd.network:20332",
+      "location": "Hong Kong",
+      "locale": "hk",
+      "type": "RPC"
+    },
+    {
+      "href": "http://seed10.ngd.network:20332",
+      "location": "Hong Kong",
+      "locale": "hk",
+      "type": "RPC"
+    }
+  ]
+}

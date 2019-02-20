@@ -14,6 +14,8 @@
 </div>
 <div class="container mt2">
     <div class="mt1 t-ri">
+        <a onclick="location.hash ='#99';changeUrl();">测试网</a>&nbsp;&nbsp;&nbsp;
+        <a onclick="location.hash ='';changeUrl();">主网</a>&nbsp;&nbsp;&nbsp;
         <a onclick="location.reload();">刷新 Refresh</a>
     </div>
     <div class="mt3">
@@ -49,10 +51,24 @@
 <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="js/template.js" type="text/javascript"></script>
 <script type="text/javascript">
-    getNet();
+
+    function changeUrl(){
+        $("#mon").html("");
+        dlist = [];
+        checkUrl();
+    }
+
+    checkUrl();
+    function checkUrl() {
+        if(!!window.location.hash){
+            getNet("js/ngdtestnet.json");
+        }else {
+            getNet("js/ngdnet.json");
+        }
+    }
     var dlist = [];
-    function getNet() {
-        $.get("js/ngdnet.json",function(data){
+    function getNet(url) {
+        $.get(url,function(data){
             var _site = data.sites;
             for(var i = 0;i<_site.length;i++){
                 var json = { 'jsonrpc': '2.0', 'method': 'getblockcount', 'params': [], 'id': i };
@@ -69,16 +85,14 @@
                             'href':_site[data.id].href,
                             'height':data.result,
                             'lantency':lan,
-                            'version':'--',
                             'type':_site[data.id].type
                         }
                     },
                     error:function(){
-                        dlist[_site.length] = {
+                        dlist[i] = {
                             'href':this.url,
                             'height':'--',
                             'lantency':'--',
-                            'version':'--',
                             'type':'--'
                         }
                     }
@@ -87,24 +101,29 @@
             getType(_site);
         });
     }
+    var z=0;
     function getType(_site) {
         for(var j = 0;j<_site.length;j++){
             var json = { 'jsonrpc': '2.0', 'method': 'getversion', 'params': [], 'id': j };
             var str = JSON.stringify(json);
-            $.ajax({
-                type: "POST",
-                url: _site[j].href,
-                data: str,
-                success: function(data){
-                    dlist[data.id].version = data.result.useragent;
-                }
-            });
+            if(localStorage.getItem(j)){
+                $("#"+j).html(localStorage.getItem(j));
+            }else{
+                $.ajax({
+                    type: "POST",
+                    url: _site[j].href,
+                    data: str,
+                    success: function(data){
+                        localStorage.setItem(data.id,data.result.useragent);
+                    }
+                });
+            }
         }
     }
     setInterval(function () {
-        getNet();
+        checkUrl();
         showTable();
-    },5000);
+    },3000);
     setTimeout(showTable,1000);
     function showTable(){
         var html = "";
@@ -113,9 +132,8 @@
                 html += "<tr><td>" + dlist[i].href + "</td>" +
                     "<td>" + dlist[i].height + "</td>" +
                     "<td>" + dlist[i].lantency + "</td>" +
-                    "<td>" + dlist[i].type + "</td>" +
-                    "<td>" + dlist[i].version + "</td>" +
-                    "</tr>"
+                    "<td>" + dlist[i].type + "</td>"+
+                    "<td id="+i+">--</td>" + "</tr>";
             }
         }
         $("#mon").html(html);
