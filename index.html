@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
     <title>NGD Monitor</title>
     <link rel="stylesheet" href="style/common.css">
     <link rel="stylesheet" href="style/monitor.css">
@@ -50,24 +53,25 @@
 </script>
 <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="js/template.js" type="text/javascript"></script>
+
 <script type="text/javascript">
+    var dlist = [];
+    window.localStorage.clear();
+    window.sessionStorage.clear();
 
     function changeUrl(){
         $("#mon").html("");
-        dlist = [];
-        checkUrl();
+        window.sessionStorage.clear();
+        getNet();
     }
 
-    checkUrl();
-    function checkUrl() {
+    function getNet() {
+        var url;
         if(!!window.location.hash){
-            getNet("js/ngdtestnet.json");
+            url = "js/ngdtestnet.json";
         }else {
-            getNet("js/ngdnet.json");
+            url = "js/ngdnet.json";
         }
-    }
-    var dlist = [];
-    function getNet(url) {
         $.get(url,function(data){
             var _site = data.sites;
             for(var i = 0;i<_site.length;i++){
@@ -89,7 +93,8 @@
                         }
                     },
                     error:function(){
-                        dlist[i] = {
+                        var _num = JSON.parse(this.data).id;
+                        dlist[_num] = {
                             'href':this.url,
                             'height':'--',
                             'lantency':'--',
@@ -106,28 +111,29 @@
         for(var j = 0;j<_site.length;j++){
             var json = { 'jsonrpc': '2.0', 'method': 'getversion', 'params': [], 'id': j };
             var str = JSON.stringify(json);
-            if(localStorage.getItem(j)){
-                $("#"+j).html(localStorage.getItem(j));
+            if(sessionStorage.getItem(j)){
+                $("#"+j).html(sessionStorage.getItem(j));
             }else{
                 $.ajax({
                     type: "POST",
                     url: _site[j].href,
                     data: str,
                     success: function(data){
-                        localStorage.setItem(data.id,data.result.useragent);
+                        sessionStorage.setItem(data.id,data.result.useragent);
                     }
                 });
             }
         }
     }
+
     setInterval(function () {
-        checkUrl();
+        getNet();
         showTable();
     },3000);
     setTimeout(showTable,1000);
     function showTable(){
         var html = "";
-        for(var i = 0;i<=10;i++){
+        for(var i = 0;i<10;i++){
             if(dlist[i]) {
                 html += "<tr><td>" + dlist[i].href + "</td>" +
                     "<td>" + dlist[i].height + "</td>" +
