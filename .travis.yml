@@ -6,4 +6,4 @@ script:
 - chmod 600 ~/.ssh/4790189186
 - eval `ssh-agent -s`
 - ssh-add ~/.ssh/4790189186
-- ssh root@47.90.189.186 -o StrictHostKeyChecking=no 'cd /var/www/html/ & ./deploy.sh'
+- ssh root@47.90.189.186 -o StrictHostKeyChecking=no '/var/www/html/deploy.sh'
