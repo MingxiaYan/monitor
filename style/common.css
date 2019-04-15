@@ -14,8 +14,7 @@ a{
     padding: 0;
     width: 100%;
     line-height: 1;
-    background: rgba(130,192,78,1);
-    background: linear-gradient(rgb(84,174,6),rgb(142,203,8));
+    background: #50AC02;
 }
 .navbar .container{
     padding: 10px 12px;
