@@ -1,5 +1,5 @@
 before_install:
-- openssl aes-256-cbc -K $encrypted_25a94f7b27d4_key -iv $encrypted_25a94f7b27d4_iv
+- openssl aes-256-cbc -K $encrypted_8595d5c3a6d2_key -iv $encrypted_8595d5c3a6d2_iv
   -in 4790189186.enc -out ~/.ssh/4790189186 -d
 script:
 - sudo apt update
@@ -7,3 +7,4 @@ script:
 - eval `ssh-agent -s`
 - ssh-add ~/.ssh/4790189186
 - ssh root@47.90.189.186 -o StrictHostKeyChecking=no '/var/www/html/deploy.sh'
+
