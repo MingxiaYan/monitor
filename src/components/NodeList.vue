@@ -39,13 +39,13 @@ export default {
   },
   mounted () {
     this.getList();
-    // if(this.timer){
-    //   clearInterval(this.timer);
-    // }else{
-    //   this.timer = setInterval(()=>{
-    //     this.getList();
-    //   },5000)
-    // }
+    if(this.timer){
+      clearInterval(this.timer);
+    }else{
+      this.timer = setInterval(()=>{
+        this.getList();
+      },5000)
+    }
   },
   methods: {
     getList:function() {
