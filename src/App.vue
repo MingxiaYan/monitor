@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="container t-ce">
     <NavBar />
-    <NodeVersion class="mt1"/>
     <NodeList />
     <img src="./assets/logo.png" class="mt1" width="114" height="50">
   </div>
@@ -10,12 +9,11 @@
 <script>
 import NavBar from './components/NavBar'
 import NodeList from './components/NodeList'
-import NodeVersion from './components/NodeVersion'
 
 export default {
   name: 'App',
   components: {
-    NavBar,NodeList,NodeVersion
+    NavBar,NodeList
   }
 }
 </script>

@@ -20,6 +20,7 @@ export default {
       this.$http.get('/api/consensus').then(function(res){
         this.items = res.data;
       },function(){
+        this.version = {mainnet:"/Neo:2.10.2/",testnet:"/Neo:2.10.1/"};
         console.log("未调用到api");
       });
     }
