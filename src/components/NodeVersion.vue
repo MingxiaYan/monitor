@@ -1,5 +1,6 @@
 <template>
   <ul id="NodeVersion" class="mt1">
+    <li>主网版本<br/><span>Mainnet Version : {{items}}</span></li>
     <li v-if="items">主网版本<br/><span>Mainnet Version : {{items.mainnet}}</span></li>
     <li v-if="items" class="green">测试网版本<br/><span>Testnet Version : {{items.testnet}}</span></li>
   </ul>
@@ -10,7 +11,7 @@
 export default {
   name: 'NodeVersion',
   data () {
-    return {items :''}
+    return {items :""}
   },
   mounted () {
     this.getVersion();
@@ -39,7 +40,7 @@ export default {
   height: 61px;
   list-style: none;
   font-size: 20px;
-  color:#50AC02;
+  color:#00af92;
   background: #FFFFFF;
   line-height: 1.3;
   letter-spacing: .3px;
@@ -47,7 +48,7 @@ export default {
 }
 #NodeVersion li.green{
   color:#FFFFFF;
-  background: #50AC02;
+  background: #007a66;
   box-shadow: 1px 1px 4px #D7D6D6;
 }
 #NodeVersion li span{

@@ -2,7 +2,7 @@
   <div id="app" class="container t-ce">
     <NavBar />
     <NodeList />
-    <img src="./assets/logo.png" class="mt1" width="114" height="50">
+    <img src="./assets/logo.svg" class="mt1" width="114">
   </div>
 </template>
 
@@ -26,7 +26,7 @@ body,html{
 }
 
 body {
-    background: #E3EEE3;
+    background: #f9fafa;
     line-height: 2.4;
     background-image: url("./assets/syncbg.svg");
     background-position: top center;
@@ -38,14 +38,14 @@ body {
 
 a {
     cursor: pointer;
-    color: #57AF06;
+    color: #00af92;
     text-decoration: none;
 }
 
 a:hover {
-    color: #308600;
+    color: #038f77;
     text-decoration: underline;
-    text-shadow: 0 0 5px #99FF66;
+    text-shadow: 0 0 3px #02e9c2;
 }
 
 .container{

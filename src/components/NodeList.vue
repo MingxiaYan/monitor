@@ -70,6 +70,7 @@ export default {
       this.$http.get('/api/consensus').then(function(res){
         this.version = res.data;
       },function(){
+        this.version = {mainnet:"/Neo:2.10.2/",testnet:"/Neo:2.10.2/"};
         console.log("未调用到api");
       });
     },
@@ -94,15 +95,15 @@ export default {
   height: 61px;
   list-style: none;
   font-size: 20px;
-  color:#50AC02;
-  background: #FFFFFF;
+  color:#FFFFFF;
+  background: #2b393f;
   line-height: 1.3;
   letter-spacing: .3px;
   padding-top: 9px;
 }
 #NodeVersion li.green{
   color:#FFFFFF;
-  background: #50AC02;
+  background: #00af92;
   box-shadow: 1px 1px 4px #D7D6D6;
 }
 #NodeVersion li span{
